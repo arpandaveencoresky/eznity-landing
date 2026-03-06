@@ -1,0 +1,126 @@
+.pricing-section {
+    padding: 100px 0;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.price-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    padding: 32px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.price-card.featured {
+    border-color: var(--color-primary);
+    background: var(--color-bg-gradient-featured);
+    transform: scale(1.05);
+    position: relative;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 100px;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 16px 0 32px;
+}
+
+.price span {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-weight: normal;
+}
+
+.price-card ul {
+    list-style: none;
+    margin-bottom: 32px;
+    text-align: left;
+}
+
+.price-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-bg-overlay);
+    color: var(--color-text-muted);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.btn-outline:hover {
+    background: var(--color-bg-overlay);
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Final CTA */
+.final-cta-section {
+    padding: 120px 0;
+    background: var(--color-bg-gradient-dark);
+    /* Keep CTA section somewhat dark or use a distinct gradient? actually "radial-gradient" was used... let's stick to gradient-dark or define a new radient if needed. Actually let's use section-alt but with a gradient. */
+    background: radial-gradient(circle at center, var(--color-bg-card) 0%, var(--color-bg-dark) 70%);
+}
+
+.cta-headline {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+    background: linear-gradient(to right, var(--color-text-main), var(--color-text-muted));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-subline {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+}
+
+.btn-large {
+    font-size: 1.25rem;
+    padding: 18px 48px;
+}
+
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .price-card.featured {
+        transform: scale(1);
+    }
+
+    .cta-headline {
+        font-size: 2.5rem;
+    }
+}

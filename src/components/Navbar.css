@@ -1,0 +1,105 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 32px 0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: transparent;
+}
+
+.navbar.scrolled {
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.04em;
+    color: var(--color-text-main);
+    z-index: 1001;
+}
+
+.logo-icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 10px var(--color-primary-glow));
+}
+
+.navbar-links {
+    display: flex;
+    gap: 40px;
+}
+
+.navbar-links a {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.navbar-links a:hover {
+    color: var(--color-text-main);
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.btn-text:hover {
+    color: var(--color-text-main);
+}
+
+.btn-sm {
+    padding: 10px 24px;
+    font-size: 0.85rem;
+    border-radius: 100px;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bar {
+    width: 20px;
+    height: 2px;
+    background: var(--color-text-main);
+    transition: all 0.3s;
+}
+
+@media (max-width: 968px) {
+    .navbar-links {
+        display: none;
+    }
+}

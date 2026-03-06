@@ -1,0 +1,153 @@
+.home3-timeline-section {
+    height: 100vh;
+    background-color: #080808;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: #666;
+}
+
+.timeline-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #111;
+    border-radius: 12px;
+    border: 1px solid #222;
+    padding: 0 20px;
+}
+
+.timeline-track {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+
+.spike {
+    width: 6px;
+    /* Slightly thinner for elegance */
+    background-color: #333;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.spike:hover {
+    background-color: #fff !important;
+    transform: scaleY(1.2);
+    z-index: 100 !important;
+    /* Ensure tooltip is on top */
+}
+
+/* Distinctive style for detected moments */
+.spike.significant {
+    background-color: #ff2a6d;
+    box-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
+    width: 8px;
+    /* Slightly wider */
+}
+
+.spike:hover .spike-tooltip {
+    opacity: 1;
+    transform: translate(-50%, -15px);
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.spike-label {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff2a6d;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    white-space: nowrap;
+    opacity: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.spike-tooltip {
+    position: absolute;
+    bottom: 100%;
+    /* Position above spike */
+    left: 50%;
+    transform: translate(-50%, 5px);
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 8px;
+    width: 160px;
+    /* Wider for preview */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 999;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tooltip-preview {
+    width: 100%;
+    height: 80px;
+    background: url('https://placehold.co/160x80/222/555?text=Clip+Preview');
+    background-size: cover;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border: 1px solid #444;
+}
+
+.playhead {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #ff2a6d;
+    z-index: 2;
+    box-shadow: 0 0 15px #ff2a6d;
+}
+
+.playhead::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -6px;
+    width: 14px;
+    height: 14px;
+    background-color: #ff2a6d;
+    border-radius: 50% 50% 0 50%;
+    transform: rotate(45deg);
+}

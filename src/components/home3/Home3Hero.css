@@ -1,0 +1,353 @@
+.home3-hero {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; Removed to prevent top overflow */
+    align-items: center;
+    background-color: #0a0a0a;
+    color: white;
+    position: relative;
+    overflow: visible;
+    /* text reveal might need visible, but usually hidden for hero. let's keep hidden or clip */
+    overflow: hidden;
+    padding-top: 180px;
+    /* Explicit spacing from top */
+    padding-bottom: 100px;
+    /* Space at bottom */
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+.live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #ff2a6d;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.live-indicator .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff2a6d;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff2a6d;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 24px;
+    margin-bottom: 24px;
+    color: white;
+}
+
+.word {
+    display: inline-block;
+    margin-right: 0.2em;
+}
+
+.hero-subtext {
+    font-size: 1.25rem;
+    color: #888;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mockup-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.video-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.video-placeholder::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.simulation-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.overlay-ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.rec-badge {
+    background: rgba(255, 0, 0, 0.2);
+    color: red;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.rec-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: red;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.viewer-count {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.timeline-bar-container {
+    margin-top: 20px;
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    position: relative;
+}
+
+.timeline-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff2a6d, #7b2cbf);
+    border-radius: 3px;
+}
+
+.marker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 3px solid var(--marker-color, #ff2a6d);
+    border-radius: 50%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+    /* transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); removed to let gsap handle animation without conflict */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.marker:hover,
+.marker.active {
+    scale: 1.3;
+    /* Using separate scale property to avoid overwriting GSAP's transform */
+    box-shadow: 0 0 20px var(--marker-color, #ff2a6d);
+    z-index: 100;
+}
+
+.marker::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+}
+
+.marker:hover,
+.marker.active {
+    transform: translateY(-50%) scale(1.4);
+    box-shadow: 0 0 15px var(--marker-color, #ff2a6d);
+}
+
+.marker-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: var(--marker-color, #ff2a6d);
+    border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+}
+
+.marker:hover .marker-pulse,
+.marker.active .marker-pulse {
+    animation: marker-ping 1.5s infinite;
+}
+
+@keyframes marker-ping {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+/* Clip Preview Card */
+.clip-preview-card {
+    position: absolute;
+    bottom: 20px;
+    /* Positioned at the bottom of video-placeholder */
+    transform: translateX(-50%) translateY(10px) scale(0.9);
+    width: 240px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.clip-preview-card.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.preview-video-mini {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: relative;
+    background: #000;
+}
+
+.preview-video-mini video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview-time {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.preview-info {
+    padding: 12px;
+    text-align: left;
+}
+
+.preview-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.preview-status {
+    font-size: 0.7rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.preview-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+}
+
+.preview-arrow {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: rgba(10, 10, 10, 0.9);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-container {
+    margin-top: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Button styles replaced by global .btn-primary */

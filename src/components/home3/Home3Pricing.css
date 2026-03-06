@@ -1,0 +1,147 @@
+.home3-pricing {
+    background: #050505;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.pricing-header h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+.billing-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 60px;
+    font-size: 1.1rem;
+    color: #888;
+}
+
+.billing-toggle span.active {
+    color: white;
+    font-weight: bold;
+}
+
+.toggle-switch {
+    width: 60px;
+    height: 32px;
+    background: #333;
+    border-radius: 16px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.switch-knob {
+    width: 26px;
+    height: 26px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.switch-knob.yearly {
+    transform: translateX(28px);
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.pricing-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 40px;
+    width: 350px;
+    text-align: left;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+}
+
+.pricing-card.pro {
+    border-color: #ff2a6d;
+    box-shadow: 0 0 30px rgba(255, 42, 109, 0.15);
+}
+
+.popular-tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff2a6d;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #888;
+    font-weight: normal;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.pricing-card ul li {
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.btn-plan {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: transparent;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-plan:hover {
+    background: #222;
+}
+
+.btn-plan.primary {
+    background: #ff2a6d;
+    border: none;
+}
+
+.btn-plan.primary:hover {
+    background: #e61e5c;
+    box-shadow: 0 0 15px rgba(255, 42, 109, 0.4);
+}

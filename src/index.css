@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Brand Colors */
+  --color-bg-dark: #000000;
+  /* Pure Black */
+  --color-bg-card: #0A0A0A;
+  /* Deep Charcoal */
+  --color-bg-card-hover: #111111;
+  --color-primary: #8b5cf6;
+  /* Violet */
+  --color-primary-glow: rgba(139, 92, 246, 0.6);
+  --color-accent: #ec4899;
+  /* Pink/Magenta for "Live" */
+  --color-accent-glow: rgba(236, 72, 153, 0.6);
+  --color-text-main: #ffffff;
+  --color-text-muted: #888888;
+  /* Slightly darker for more contrast against white */
+  --color-border: #1F1F1F;
+  /* Specific border color for dark mode */
+  --color-border-hover: #333333;
+  --color-navbar-bg: rgba(0, 0, 0, 0.7);
+  /* More transparent */
+  --color-navbar-border: rgba(255, 255, 255, 0.08);
+  --color-bg-overlay: rgba(255, 255, 255, 0.03);
+  --color-bg-overlay-hover: rgba(255, 255, 255, 0.08);
+  --color-text-inverse: #000000;
+  --color-text-on-dark: #ffffff;
+
+  /* Dramatic Lighting */
+  --glow-stage-blue: rgba(0, 100, 255, 0.15);
+  --glow-stage-purple: rgba(120, 0, 255, 0.15);
+
+  /* Typography */
+  --font-main: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing */
+  --container-width: 1200px;
+  --section-spacing: 120px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-main);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Layout Wrapper to handle Theme Backgrounds */
+.app-layout {
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Theme Overrides */
+.light-theme {
+  --color-bg-dark: #ffffff;
+  --color-bg-card: #f3f4f6;
+  --color-text-main: #111827;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-navbar-bg: rgba(255, 255, 255, 0.8);
+  --color-navbar-border: rgba(0, 0, 0, 0.05);
+  --color-bg-overlay: rgba(0, 0, 0, 0.05);
+  --color-bg-overlay-hover: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .hero-section::before,
+.light-theme .hero-section::after {
+  opacity: 0.1;
+  /* Subtler glow on light mode */
+}
+
+/* Utilities */
+.btn-primary {
+  background: var(--color-text-main);
+  color: var(--color-bg-dark);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.2s, background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary {
+  background: var(--color-bg-overlay);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg-overlay-hover);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(236, 72, 153, 0.1);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  border-radius: 100px;
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 var(--color-accent-glow);
+  }
+
+  70% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 6px rgba(236, 72, 153, 0);
+  }
+
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+  }
+}

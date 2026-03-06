@@ -1,0 +1,21 @@
+[
+    {
+        "id": "free",
+        "name": "Free",
+        "price": 0,
+        "features": [
+            "Feature 1",
+            "Feature 2"
+        ]
+    },
+    {
+        "id": "pro",
+        "name": "Pro",
+        "price": 29,
+        "features": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+        ]
+    }
+]

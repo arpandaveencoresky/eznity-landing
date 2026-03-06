@@ -1,0 +1,115 @@
+.home3-personas {
+    background: #050505;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.home3-personas h2 {
+    font-size: 3rem;
+    margin-bottom: 60px;
+}
+
+.personas-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 400px;
+    /* Fixed height for animation */
+}
+
+.persona-card {
+    flex: 1;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 30px;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    opacity: 0.6;
+}
+
+.persona-card.active {
+    flex: 2.5;
+    /* Expand active card */
+    opacity: 1;
+    background: #161616;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-header .icon {
+    font-size: 2rem;
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+.card-body {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    transition-delay: 0.1s;
+}
+
+.persona-card.active .card-body {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-body p {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.fake-clip-preview {
+    width: 100%;
+    height: 200px;
+    background: #222;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.fake-clip-preview::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #222, #333);
+    opacity: 0.5;
+}
+
+.play-btn {
+    width: 50px;
+    height: 50px;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}

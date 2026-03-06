@@ -1,0 +1,46 @@
+/* Style 1: Minimal Pro */
+/* Designed for 1080x1920 base resolution - scaled by container transform */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('BASE_64_FONT_data') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.line {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+}
+
+.line-being-narrated {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.word {
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 60px;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+    margin: 0 6px;
+    padding: 3px 6px;
+    line-height: 1.2;
+}
+
+/* Highlighted word - both class names for frontend/backend compatibility */
+.word-being-narrated,
+.word.highlighted {
+    color: #ffd95a;
+    font-weight: 700;
+}

@@ -1,0 +1,91 @@
+/* Editor-specific styles */
+
+/* Resize handles */
+.resize-handle {
+  position: absolute;
+  background-color: rgb(124, 60, 237);
+  border: 1px solid rgb(124, 60, 237);
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  z-index: 1000;
+  transition: background-color 0.2s ease;
+}
+
+.resize-handle:hover {
+  background-color: rgb(109, 40, 217);
+}
+
+/* Left and right handles */
+.resize-handle-left,
+.resize-handle-right {
+  width: 4px; /* w-1 */
+  height: 12px; /* h-3 */
+  cursor: ew-resize;
+}
+
+.resize-handle-left {
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.resize-handle-right {
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
+/* Top and bottom handles */
+.resize-handle-top,
+.resize-handle-bottom {
+  width: 12px; /* w-3 */
+  height: 4px; /* h-1 */
+  cursor: ns-resize;
+}
+
+.resize-handle-top {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.resize-handle-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+/* Text overlay container - no outline by default */
+.text-overlay-container {
+  outline: none;
+}
+
+/* Text overlay container when selected */
+.text-overlay-container.selected {
+  outline: 2px solid rgb(124, 60, 237) !important;
+}
+
+/* Text overlay container when dragging */
+.text-overlay-container.dragging {
+  outline: 2px solid rgb(124, 60, 237) !important;
+}
+
+/* Text overlay container when resizing */
+.text-overlay-container.resizing {
+  outline: 2px solid rgb(124, 60, 237) !important;
+}
+
+/* Resize handles - hidden by default */
+.resize-handle {
+  display: none;
+}
+
+/* Show resize handles only when text block is selected */
+.text-overlay-container.selected .resize-handle {
+  display: block;
+}
+
+/* Hide layout dropdown button everywhere via CSS */
+.layout-dropdown-container {
+  display: none !important;
+}

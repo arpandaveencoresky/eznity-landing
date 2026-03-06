@@ -1,0 +1,126 @@
+.home3-system-reveal {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #050505;
+    color: white;
+}
+
+.reveal-wrapper {
+    display: flex;
+    width: 300%;
+    height: 100%;
+}
+
+.reveal-step {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.step-content {
+    text-align: center;
+    max-width: 400px;
+    padding: 20px;
+    position: relative;
+    z-index: 5;
+    background-color: #050505;
+}
+
+.step-number {
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: -1;
+}
+
+.step-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #222, #111);
+    border: 1px solid #333;
+    border-radius: 20px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.youtube-icon {
+    color: #ff0000;
+}
+
+.ai-orb {
+    background: black;
+}
+
+.orb-pulse {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #7b2cbf 0%, transparent 70%);
+    border-radius: 50%;
+    animation: orb-pulse 2s infinite;
+}
+
+@keyframes orb-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+.clips-card {
+    background: #1a1a1a;
+}
+
+.clip-check {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+.connector-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Extend to fully connect to the center of the next slide */
+    width: 100vw;
+    height: 2px;
+    background: linear-gradient(90deg, #333 0%, #ff2a6d 100%);
+    opacity: 0.5;
+    z-index: 1;
+    transform-origin: left center;
+}
