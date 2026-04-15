@@ -16,7 +16,7 @@
 }
 
 .home3-cta h2 {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 6vw, 4rem);
     margin-bottom: 60px;
     background: linear-gradient(to right, #fff, #bbb);
     background-clip: text;

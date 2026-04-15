@@ -16,13 +16,15 @@ const Home3Personas = () => {
             title: "The Just Chatting Star",
             desc: "Highlighted chat spikes and high-laughter moments.",
             icon: "💬",
-            color: "#7b2cbf"
+            color: "#7b2cbf",
+            videoUrl: "/videos/just chatting new.mp4"
         },
         {
             title: "The Esports Pro",
             desc: "Tactical plays and clutch rounds automatically clipped.",
             icon: "🎮",
-            color: "#00b4d8"
+            color: "#00b4d8",
+            videoUrl: "/videos/esports new.mp4"
         }
     ];
 
@@ -68,9 +70,21 @@ const Home3Personas = () => {
                         </div>
                         <div className="card-body">
                             <p>{persona.desc}</p>
-                            <div className="fake-clip-preview">
-                                <div className="play-btn">▶</div>
-                            </div>
+                            {persona.videoUrl ? (
+                                <div className="clip-preview-video">
+                                    <video
+                                        src={persona.videoUrl}
+                                        controls
+                                        playsInline
+                                        preload="metadata"
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
+                                    />
+                                </div>
+                            ) : (
+                                <div className="fake-clip-preview">
+                                    <div className="play-btn">▶</div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}

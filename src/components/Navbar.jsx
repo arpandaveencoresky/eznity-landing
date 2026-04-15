@@ -3,6 +3,8 @@ import './Navbar.css';
 
 import { Link } from 'react-router-dom';
 
+import EznityLogo from './common/EznityLogo';
+
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,12 +21,11 @@ const Navbar = () => {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
                 <Link to="/" className="navbar-logo">
-                    <span className="logo-icon">⚡</span>
-                    <span className="logo-text">EZNITY</span>
+                    <EznityLogo />
                 </Link>
 
                 <div className={`navbar-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
-                    <a href="#pricing" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
+                    <Link to="/pricing" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
                 </div>
 
                 <div className="navbar-actions">

@@ -1,0 +1,31 @@
+<svg viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg" fill="white">
+  <!-- EZN! text top -->
+  <text
+    x="140"
+    y="88"
+    text-anchor="middle"
+    font-family="Impact, 'Arial Black', 'Haettenschweiler', sans-serif"
+    font-size="80"
+    font-weight="900"
+    letter-spacing="-1"
+    fill="white"
+  >EZN!</text>
+
+  <!-- Large ! exclamation mark icon -->
+  <!-- Body (rounded rectangle) -->
+  <rect x="104" y="108" width="72" height="228" rx="10" fill="white"/>
+  <!-- Dot (circle) -->
+  <circle cx="140" cy="390" r="40" fill="white"/>
+
+  <!-- TY text bottom -->
+  <text
+    x="140"
+    y="490"
+    text-anchor="middle"
+    font-family="Impact, 'Arial Black', 'Haettenschweiler', sans-serif"
+    font-size="80"
+    font-weight="900"
+    letter-spacing="-1"
+    fill="white"
+  >TY</text>
+</svg>

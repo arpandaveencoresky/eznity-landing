@@ -369,7 +369,7 @@ const UsageTab = () => {
                         justifyContent: 'space-between',
                         alignItems: 'center'
                     }}>
-                        <span style={{ fontWeight: '700' }}>EZNITY</span>
+                        <span style={{ fontWeight: '900', letterSpacing: '-0.05em' }}>EZN!TY</span>
                         <div style={{ display: 'flex', gap: '12px' }}>
                             <div className="live-badge" style={{ transform: 'scale(0.8)' }}>
                                 <div className="live-dot"></div>

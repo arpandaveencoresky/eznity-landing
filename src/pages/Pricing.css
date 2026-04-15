@@ -1,0 +1,205 @@
+.pricing-page {
+    padding-top: 100px;
+    background: var(--color-bg-dark);
+    min-height: 100vh;
+}
+
+.pricing-hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pricing-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    letter-spacing: -0.05em;
+}
+
+.pricing-hero p {
+    color: var(--color-text-muted);
+    font-size: 1.25rem;
+}
+
+/* PLANS GRID */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.plan-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+}
+
+.plan-card.popular {
+    border-color: var(--color-primary);
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.05) 0%, var(--color-bg-card) 100%);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: white;
+    padding: 4px 16px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.plan-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--color-text-main);
+}
+
+.price {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.currency {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.period {
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.plan-desc {
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+    flex-grow: 1;
+}
+
+.plan-card button {
+    width: 100%;
+}
+
+/* COMPARISON TABLE */
+.comparison-section {
+    padding-bottom: 120px;
+}
+
+.comparison-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.comparison-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.comparison-table th, 
+.comparison-table td {
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.comparison-table th {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Category Rows */
+.category-row td {
+    background: rgba(255, 255, 255, 0.02);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    padding: 30px 40px 15px;
+}
+
+/* Feature Rows */
+.feature-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.info-icon {
+    opacity: 0.4;
+    cursor: help;
+}
+
+/* Icons and Values */
+.check-icon {
+    color: #10b981;
+}
+
+.x-icon {
+    color: #ef4444;
+    opacity: 0.5;
+}
+
+.value-text {
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+@media (max-width: 968px) {
+    .pricing-hero h1 { font-size: 3rem; }
+    .plans-grid { 
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+    .comparison-table th, 
+    .comparison-table td {
+        padding: 16px 20px;
+    }
+    .category-row td { padding: 24px 20px 12px; }
+}

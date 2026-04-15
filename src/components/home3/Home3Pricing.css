@@ -6,7 +6,7 @@
 }
 
 .pricing-header h2 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 40px;
 }
 
@@ -144,4 +144,20 @@
 .btn-plan.primary:hover {
     background: #e61e5c;
     box-shadow: 0 0 15px rgba(255, 42, 109, 0.4);
+}
+
+@media (max-width: 1024px) {
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pricing-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .home3-pricing {
+        padding: 60px 20px;
+    }
 }

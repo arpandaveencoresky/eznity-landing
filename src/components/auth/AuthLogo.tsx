@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import EznityLogo from '../common/EznityLogo';
 
 interface AuthLogoProps {
   className?: string;
@@ -16,15 +17,10 @@ export const AuthLogo = ({
   onClick,
 }: AuthLogoProps) => {
   return (
-    <div className={cn('flex items-center gap-1 text-primary-foreground/90 hover:opacity-80 cursor-pointer select-none', className)}
+    <div className={cn('flex items-center gap-1 hover:opacity-80 cursor-pointer select-none', className)}
     onClick={() => onClick?.()}
     >
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary border border-white/25 backdrop-blur-sm font-semibold tracking-wide">
-        {badgeText}
-        </div>
-        <div className={cn('text-sm font-semibold uppercase tracking-[0.12em]', type === 'primary' ? 'text-primary' : 'text-white')}>
-        {title}
-      </div>
+      <EznityLogo variant="inline" height={32} color={type === 'white' ? 'white' : 'currentColor'} />
     </div>
   );
 };
