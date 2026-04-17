@@ -1,3 +1,8 @@
+/* ══════════════════════════════════════
+   Home3 Features  —  Feature rows
+   Figma: node 239:935
+   ══════════════════════════════════════ */
+
 .home3-features {
     background-color: #0a0a0a;
     color: white;
@@ -5,98 +10,87 @@
     overflow: hidden;
 }
 
-.feature-stage {
+/* ── Feature row ── */
+.feature-row {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 80vh;
-    padding: clamp(30px, 5vw, 60px) clamp(20px, 4vw, 40px);
-    gap: clamp(30px, 5vw, 60px);
+    justify-content: space-between;
+    min-height: 720px;
+    padding: 0 clamp(24px, 5vw, 80px);
+    gap: clamp(40px, 5vw, 80px);
 }
 
-.feature-stage.reverse {
+.feature-row--reversed {
     flex-direction: row-reverse;
 }
 
-.stage-content {
-    flex: 1;
-    max-width: 100%;
+/* ── Text block ── */
+.feature-text {
+    flex: 0 0 400px;
+    max-width: 400px;
+    padding-bottom: 40px;
+    opacity: 0; /* GSAP animates in */
 }
 
-.stage-num {
-    font-size: clamp(4rem, 10vw, 8rem);
-    /* Larger */
+.step-ghost {
+    font-size: 80px;
     font-weight: 900;
-    color: #1a1a1a;
-    /* Very dark, subtle */
-    line-height: 0.8;
-    margin-bottom: -10px;
-    position: relative;
-    z-index: 0;
+    color: #222;
+    line-height: 1;
+    margin-bottom: -20px;
+    user-select: none;
     display: block;
 }
 
-.stage-content h3 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    margin-bottom: 24px;
+.feature-title {
+    font-size: 40px;
+    font-weight: 700;
     color: #ff2a6d;
-    /* Detailed Pink */
-    margin-top: 10px;
-    line-height: 1.1;
+    line-height: 48px;
+    margin: 0;
+    margin-bottom: -20px;
 }
 
-.stage-content p {
-    font-size: 1.2rem;
+.feature-desc {
+    font-size: 19.2px;
     color: #ccc;
-    margin-bottom: 20px;
+    line-height: 30.72px;
+    padding-top: 39px;
+    margin: 0;
+    max-width: 360px;
 }
 
-.stage-visual {
-    flex: 2;
-    /* Take more space for cards */
+/* ── Cards block ── */
+.feature-cards {
+    flex: 1;
     display: flex;
-    justify-content: center;
+    gap: 20px;
+    min-width: 0;
 }
 
-.feature-cards-grid {
-    position: relative;
-    width: 100%;
-    /* Fixed height needed for absolute cards to sit in */
-    height: 450px;
-}
-
-.home3-feature-card {
-    background: #151515;
-    /* Darker background from Figma */
-    border: 1px solid #333;
-    border-radius: 20px;
-    /* More rounded */
-    padding: 32px;
-    /* More padding */
+/* ── Individual card ── */
+.feature-card {
+    flex: 1 1 380px;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s, box-shadow 0.3s;
-    /* Absolute position for stacking */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    /* Ensure content stays inside */
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 25px;
+    opacity: 0; /* GSAP animates in */
+    transition: border-color 0.3s;
 }
 
-.home3-feature-card:hover {
+.feature-card:hover {
     border-color: #555;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
-.card-header {
+.feature-card-header {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 8px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 .feature-icon {
@@ -104,53 +98,57 @@
     align-items: center;
     justify-content: center;
     color: #ff2a6d;
-    /* Pink accent */
-    width: 32px;
-    height: 32px;
-    background: rgba(255, 42, 109, 0.15);
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: rgba(255, 42, 109, 0.1);
     border-radius: 8px;
 }
 
-.home3-feature-card h4 {
-    font-size: 1.25rem;
+.feature-card-title {
+    font-size: 17.6px;
+    font-weight: 600;
     color: white;
-    font-weight: 700;
     margin: 0;
+    line-height: 21.12px;
 }
 
-.home3-feature-card p {
-    font-size: 1rem;
+.feature-card-desc {
+    font-size: 14.4px;
     color: #888;
-    line-height: 1.6;
-    margin-bottom: 32px;
-    flex-grow: 0;
-    max-width: 90%;
+    line-height: 21.6px;
+    margin: 0 0 20px;
 }
 
-.feature-visual {
+/* ── Card preview area ── */
+.feature-card-preview {
     flex: 1;
-    background: #0a0a0a;
-    /* Inner visual background */
+    min-height: 140px;
     border-radius: 12px;
-    /* border: 1px solid rgba(255, 255, 255, 0.05); REMOVED border to match clean look */
-    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.02),
+        rgba(255, 255, 255, 0.05)
+    );
     overflow: hidden;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 200px;
-    /* Ensure enough height */
-    width: 100%;
 }
 
-/* --- Visuals specific from Features.css adapted for dark theme --- */
+/* ══════════════════════════════
+   Card Visuals
+   ══════════════════════════════ */
 
-/* 1. Auto-Record Visual */
+/* 1. Auto-Record */
 .visual-rec {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    padding: 20px 0;
 }
 
 .rec-text {
@@ -186,11 +184,12 @@
     animation: wave 1s ease-in-out infinite;
 }
 
-/* 2. Zero Uploads (Network) */
+/* 2. Zero Uploads */
 .visual-network {
     display: flex;
     align-items: center;
     gap: 24px;
+    padding: 0 16px;
 }
 
 .net-node {
@@ -200,6 +199,7 @@
     font-size: 0.8rem;
     font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
 }
 
 .net-flow {
@@ -217,17 +217,15 @@
     animation: flow 1.5s infinite;
 }
 
-.delay-1 {
-    animation-delay: 0.2s;
-}
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
 
-.delay-2 {
-    animation-delay: 0.4s;
-}
-
-/* 3. Viral Score */
+/* 3. Viral Scoring */
 .visual-score {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
 }
 
 .score-gauge {
@@ -236,55 +234,26 @@
     height: 70px;
 }
 
+.gauge-svg {
+    width: 100%;
+    height: 100%;
+}
+
 .score-val {
     position: absolute;
     bottom: 0;
     width: 100%;
     text-align: center;
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 900;
     color: #8b5cf6;
     line-height: 1;
 }
 
-/* 4. Emotion Face */
-.visual-face {
-    position: relative;
-    width: 120px;
-    height: 160px;
-    background: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80') center/cover;
-    border-radius: 8px;
-    opacity: 0.8;
-}
-
-.face-frame {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    right: 20%;
-    bottom: 30%;
-    border: 2px solid #ec4899;
-    border-radius: 4px;
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
-}
-
-.face-tag {
-    position: absolute;
-    top: -24px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ec4899;
-    color: white;
-    font-size: 0.7rem;
-    padding: 2px 6px;
-    border-radius: 4px;
-    white-space: nowrap;
-}
-
-/* 5. Smart Framing */
+/* 4. Smart Framing */
 .visual-crop {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -295,7 +264,6 @@
     width: 160px;
     height: 90px;
     border: 1px dashed rgba(255, 255, 255, 0.3);
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,11 +273,12 @@
     width: 40px;
     height: 70px;
     border: 2px solid #10b981;
+    background: transparent;
     box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.7);
-    z-index: 10;
+    z-index: 1;
 }
 
-/* 6. Auto Chat Bubbles */
+/* 5. Auto Captions */
 .visual-chat {
     width: 100%;
     padding: 20px;
@@ -337,34 +306,29 @@
     border-radius: 3px;
 }
 
-.w-80 {
-    width: 120px;
-}
+.w-80 { width: 120px; }
+.w-60 { width:  80px; }
 
-.w-60 {
-    width: 80px;
-}
-
-/* 7. Social Icons */
+/* 6. One-Click Post */
 .visual-social {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    padding: 16px 0;
 }
 
 .social-icon {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    background: #333;
+    border-radius: 20px;
+    flex-shrink: 0;
+    position: relative;
 }
 
 .social-icon.tiktok {
-    /* Placeholder */
     background: #000;
     border: 1px solid #333;
-    position: relative;
 }
 
 .social-icon.tiktok::after {
@@ -377,7 +341,15 @@
 }
 
 .social-icon.instagram {
-    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    background: linear-gradient(
+        45deg,
+        rgb(64,  93,  230) 0%,
+        rgb(88,  81,  219) 20%,
+        rgb(131, 58,  180) 40%,
+        rgb(193, 53,  132) 60%,
+        rgb(225, 48,  108) 80%,
+        rgb(253, 29,  29)  100%
+    );
 }
 
 .social-icon.youtube {
@@ -391,69 +363,86 @@
     border-radius: 100px;
     font-size: 0.8rem;
     font-weight: 600;
+    white-space: nowrap;
 }
 
-/* Animations from Features.css */
+/* ══════════════════════════════
+   Keyframe animations
+   ══════════════════════════════ */
+
 @keyframes blink {
-    50% {
-        opacity: 0;
-    }
+    50% { opacity: 0; }
 }
 
 @keyframes wave {
-
-    0%,
-    100% {
-        height: 30%;
-    }
-
-    50% {
-        height: 100%;
-    }
+    0%, 100% { height: 30%; }
+    50%       { height: 100%; }
 }
 
 @keyframes flow {
-    0% {
-        opacity: 0;
-        transform: translateX(-10px) rotate(-45deg);
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateX(10px) rotate(-45deg);
-    }
+    0%   { opacity: 0; transform: translateX(-10px) rotate(-45deg); }
+    50%  { opacity: 1; }
+    100% { opacity: 0; transform: translateX(10px)  rotate(-45deg); }
 }
 
-@media (max-width: 1024px) {
-    .feature-stage,
-    .feature-stage.reverse {
-        flex-direction: column;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        min-height: auto;
+/* ══════════════════════════════
+   Responsive
+   ══════════════════════════════ */
+
+@media (max-width: 1100px) {
+    .feature-text {
+        flex: 0 0 320px;
+        max-width: 320px;
     }
 
-    .stage-content,
-    .stage-visual {
-        max-width: 100%;
+    .step-ghost    { font-size: 64px; }
+    .feature-title { font-size: 32px; }
+    .feature-desc  { font-size: 17px; }
+}
+
+@media (max-width: 860px) {
+    .feature-row,
+    .feature-row--reversed {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: unset;
+        padding: 60px clamp(20px, 5vw, 40px);
+        gap: 40px;
+    }
+
+    .feature-text {
+        flex: none;
         width: 100%;
+        max-width: 520px;
+        padding-bottom: 0;
     }
 
-    .feature-cards-grid {
-        height: auto;
-        display: flex;
+    .feature-cards {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .feature-card {
+        flex: 1 1 280px;
+        min-width: 280px;
+    }
+
+    .step-ghost    { font-size: 56px; }
+    .feature-title { font-size: 28px; line-height: 36px; }
+    .feature-desc  { font-size: 16px; padding-top: 28px; }
+}
+
+@media (max-width: 560px) {
+    .feature-cards {
         flex-direction: column;
-        gap: 20px;
     }
 
-    .home3-feature-card {
-        position: relative;
-        top: 0 !important; /* Override inline styles if any */
-        left: 0 !important;
-        transform: none !important; /* Override inline styles if any */
+    .feature-card {
+        flex: none;
+        width: 100%;
+        min-width: 0;
     }
+
+    .step-ghost    { font-size: 48px; }
+    .feature-title { font-size: 26px; }
 }

@@ -13,14 +13,16 @@ const Home3Hero = () => {
     const mockupRef = useRef(null);
     const timelineRef = useRef(null);
     const fileInputRef = useRef(null);
-    const [hoveredMarker, setHoveredMarker] = useState(null);
-    const [videoLink, setVideoLink] = useState('');
 
     const markersData = [
         { id: 'm1', time: '02:45', title: 'Epic Win Clip', color: '#ff2a6d', left: '20%', video: '/videos/clip1.mp4' },
         { id: 'm2', time: '14:20', title: 'Viral Reaction', color: '#7b2cbf', left: '55%', video: '/videos/simulation.mp4' },
         { id: 'm3', time: '28:15', title: 'Top Moment', color: '#00f2ff', left: '85%', video: '/videos/m3-preview.mp4' }
     ];
+
+    const [activeMarker, setActiveMarker] = useState(markersData[2]);
+    const [videoLink, setVideoLink] = useState('');
+
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -107,7 +109,7 @@ const Home3Hero = () => {
         <section className="home3-hero" ref={heroRef}>
             <div className="hero-content">
                 <div className="live-indicator">
-                    <span className="dot"></span> LIVE INTELLIGENCE
+                    <span className="dot"></span> AI Video Clipper
                 </div>
 
                 <h1 ref={headlineRef}>
@@ -191,20 +193,20 @@ const Home3Hero = () => {
                             <span className="viewer-count">12.4k watching</span>
                         </div>
 
-                        {/* Clip Preview Tooltip */}
-                        {hoveredMarker && (
+                        {/* Clip Preview Tooltip — always visible, driven by activeMarker */}
+                        {activeMarker && (
                             <div
                                 className="clip-preview-card active"
-                                style={{ left: hoveredMarker.left }}
+                                style={{ left: activeMarker.left }}
                             >
                                 <div className="preview-video-mini">
-                                    <video key={hoveredMarker.id} autoPlay muted loop playsInline>
-                                        <source src={hoveredMarker.video} type="video/mp4" />
+                                    <video key={activeMarker.id} autoPlay muted loop playsInline>
+                                        <source src={activeMarker.video} type="video/mp4" />
                                     </video>
-                                    <div className="preview-time">{hoveredMarker.time}</div>
+                                    <div className="preview-time">{activeMarker.time}</div>
                                 </div>
                                 <div className="preview-info">
-                                    <div className="preview-title">{hoveredMarker.title}</div>
+                                    <div className="preview-title">{activeMarker.title}</div>
                                     <div className="preview-status">AI Generated Clip</div>
                                 </div>
                                 <div className="preview-arrow"></div>
@@ -217,12 +219,12 @@ const Home3Hero = () => {
                         {markersData.map((marker) => (
                             <div
                                 key={marker.id}
-                                className={`marker ${marker.id} ${hoveredMarker?.id === marker.id ? 'active' : ''}`}
-                                onMouseEnter={() => setHoveredMarker(marker)}
-                                onMouseLeave={() => setHoveredMarker(null)}
+                                className={`marker ${marker.id} ${activeMarker?.id === marker.id ? 'active' : ''}`}
+                                onClick={() => setActiveMarker(marker)}
                                 style={{
                                     '--marker-color': marker.color,
-                                    left: marker.left
+                                    left: marker.left,
+                                    cursor: 'pointer'
                                 }}
                             >
                                 <div className="marker-pulse"></div>

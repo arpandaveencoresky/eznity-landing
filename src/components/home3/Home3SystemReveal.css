@@ -1,134 +1,440 @@
+/* ══════════════════════════════════════
+   Home3 System Reveal  —  Step-by-step horizontal reveal
+   ══════════════════════════════════════ */
+
 .home3-system-reveal {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-color: #050505;
+    background-color: #0d0a05;
     color: white;
+    /* overflow handled by .reveal-overflow child */
 }
 
-.reveal-wrapper {
-    display: flex;
-    width: 300%;
-    height: 100%;
-}
-
-.reveal-step {
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.step-content {
+/* ── Section header ── */
+.reveal-header {
     text-align: center;
-    max-width: 400px;
-    padding: 20px;
-    position: relative;
-    z-index: 5;
-    background-color: #050505;
+    padding: 90px 24px 60px;
 }
 
-.step-number {
-    font-size: clamp(4rem, 15vw, 8rem);
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.03);
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: -1;
+.section-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ff4d6d;
+    margin-bottom: 14px;
 }
 
-.step-icon {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, #222, #111);
-    border: 1px solid #333;
-    border-radius: 20px;
-    margin: 0 auto 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    position: relative;
+.reveal-header h2 {
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: white;
+    line-height: 1.15;
+}
+
+.eyebrow-accent {
+    color: #555;
+}
+
+/* ── Overflow clip wrapper ──
+   Keeps steps that are off-screen (waiting to slide in) invisible */
+.reveal-overflow {
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
 }
 
-.youtube-icon {
-    color: #ff0000;
+/* ── Horizontal scroll track ──
+   width: max-content so GSAP can measure & translate it.
+   No padding — centering is done purely via GSAP x transform. */
+.reveal-track {
+    display: flex;
+    align-items: center;
+    padding-bottom: 100px;
+    width: max-content;
+    will-change: transform;
 }
 
-.ai-orb {
-    background: black;
+/* ── Step card ── */
+.reveal-step {
+    width: 420px;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 0 28px;
+    /* Step 1 visible by default; steps 2 & 3 start invisible (set by GSAP) */
 }
 
-.orb-pulse {
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle, #7b2cbf 0%, transparent 70%);
-    border-radius: 50%;
-    animation: orb-pulse 2s infinite;
+.step-num-label {
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    line-height: 1;
+    margin-bottom: -12px;
+    user-select: none;
 }
 
-@keyframes orb-pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-
-    50% {
-        transform: scale(1.5);
-        opacity: 0.4;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
+.reveal-step h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+    margin-top: 20px;
 }
 
-.clips-card {
-    background: #1a1a1a;
-}
-
-.clip-check {
-    color: #00ff00;
-    font-weight: bold;
-}
-
-h2 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 16px;
-    font-family: 'Inter', sans-serif;
-}
-
-p {
-    font-size: 1.2rem;
-    color: #888;
+.reveal-step p {
+    font-size: 0.88rem;
+    color: #555;
     line-height: 1.6;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+/* ── Preview area (same height for all 3 steps) ── */
+.step-preview-area {
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Shared video base ── */
+.step-preview {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.step-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ══════════════════════════
+   STEP 1 — Live Preview
+   ══════════════════════════ */
+.live-preview {
+    width: 364px;
+    height: 205px;   /* 16:9 */
+    border: 1px solid #2a2a2a;
+    background: linear-gradient(to bottom, #241a0f, #0d0d0d);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.preview-live-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(200, 0, 0, 0.75);
+    color: white;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.badge-dot {
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    animation: badge-blink 1.4s ease-in-out infinite;
+}
+
+@keyframes badge-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+.preview-viewer-count {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.65);
+    color: #ddd;
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+/* ══════════════════════════
+   STEP 2 — AI Scan Preview
+   ══════════════════════════ */
+.ai-preview {
+    width: 364px;
+    height: 205px;   /* 16:9 */
+    background: linear-gradient(to bottom, #1a0f29, #0a0a0f);
+}
+
+.ai-preview {
+    overflow: visible !important;
+}
+
+.ai-preview .step-video {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.ai-spin-ring {
+    position: absolute;
+    inset: -3px;
+    border-radius: 13px;
+    background: conic-gradient(
+        #7b2cbf 0%,
+        #ff2a6d 30%,
+        #00f2ff 60%,
+        #7b2cbf 100%
+    );
+    animation: ring-spin 2.4s linear infinite;
+    z-index: 0;
+}
+
+.ai-spin-ring.ring-2 {
+    inset: -1px;
+    background: #050505;
+    border-radius: 11px;
+    animation: none;
+    z-index: 0;
+}
+
+/* Box-shadow cycling border */
+.ai-preview {
+    overflow: hidden !important;
+    box-shadow:
+        0 0 0 2px #7b2cbf,
+        0 0 24px rgba(123, 44, 191, 0.5),
+        0 8px 32px rgba(0, 0, 0, 0.7);
+    animation: ai-border-cycle 2.5s ease-in-out infinite;
+}
+
+.ai-spin-ring { display: none; }
+
+@keyframes ai-border-cycle {
+    0%   { box-shadow: 0 0 0 2px #7b2cbf, 0 0 24px rgba(123,44,191,0.5), 0 8px 32px rgba(0,0,0,0.7); }
+    33%  { box-shadow: 0 0 0 2px #ff2a6d, 0 0 24px rgba(255,42,109,0.5), 0 8px 32px rgba(0,0,0,0.7); }
+    66%  { box-shadow: 0 0 0 2px #00f2ff, 0 0 24px rgba(0,242,255,0.4),  0 8px 32px rgba(0,0,0,0.7); }
+    100% { box-shadow: 0 0 0 2px #7b2cbf, 0 0 24px rgba(123,44,191,0.5), 0 8px 32px rgba(0,0,0,0.7); }
+}
+
+.ai-scan-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(123, 44, 191, 0.5) 20%,
+        rgba(0, 242, 255, 0.9) 50%,
+        rgba(123, 44, 191, 0.5) 80%,
+        transparent 100%
+    );
+    animation: scan-sweep 2s linear infinite;
+    z-index: 3;
+    pointer-events: none;
+}
+
+@keyframes scan-sweep {
+    0%   { top: 0%;   opacity: 1; }
+    85%  { opacity: 0.8; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.cbracket {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: rgba(0, 242, 255, 0.85);
+    border-style: solid;
+    z-index: 4;
+    pointer-events: none;
+    animation: bracket-pulse 2s ease-in-out infinite;
+}
+
+.cbracket.tl { top: 8px;    left: 8px;  border-width: 2px 0 0 2px; }
+.cbracket.tr { top: 8px;   right: 8px;  border-width: 2px 2px 0 0; }
+.cbracket.bl { bottom: 8px; left: 8px;  border-width: 0 0 2px 2px; }
+.cbracket.br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+@keyframes bracket-pulse {
+    0%, 100% { opacity: 0.9; }
+    50%       { opacity: 0.35; }
+}
+
+.ai-analyzing-label {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.72);
+    color: #aaa;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    z-index: 4;
+    white-space: nowrap;
+}
+
+.analyzing-dot {
+    width: 5px;
+    height: 5px;
+    background: #00f2ff;
+    border-radius: 50%;
+    animation: analyzing-blink 1s ease-in-out infinite;
+}
+
+@keyframes analyzing-blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.3; transform: scale(0.7); }
+}
+
+/* ══════════════════════════
+   STEP 3 — Clip Ready (portrait / reel)
+   ══════════════════════════ */
+.clip-preview {
+    overflow: visible !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reel-frame {
+    width: 116px;
+    height: 205px;   /* 9:16 portrait */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to bottom, #0f1f14, #0a0a0a);
+    border: 2px solid rgba(0, 230, 117, 0.35);
+    box-shadow:
+        0 0 17px rgba(0, 230, 117, 0.2),
+        0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.reel-video {
+    object-position: center top;
+}
+
+.clip-ready-badge {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #00e676;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+    z-index: 2;
+    border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.reel-social-row {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 2;
+}
+
+.reel-platform {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    display: block;
+}
+
+.reel-platform.tk { background: #010101; border: 1px solid #333; }
+.reel-platform.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.reel-platform.yt { background: #ff0000; }
+
+/* ── Connector (line only — no arrow) ── */
+.connector-wrapper {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 120px;
+    /* nudge up to align with preview vertical centre */
+    margin-top: -80px;
 }
 
 .connector-line {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* Extend to fully connect to the center of the next slide */
-    width: 100vw;
-    height: 2px;
-    background: linear-gradient(90deg, #333 0%, #ff2a6d 100%);
-    opacity: 0.5;
-    z-index: 1;
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #333 0%, #ff4d6d 100%);
     transform-origin: left center;
+    /* scaleX animated by GSAP from 0 → 1 */
 }
 
+/* ── Responsive — vertical stack on mobile ── */
 @media (max-width: 768px) {
-    .step-icon {
-        width: 80px;
-        height: 80px;
-        font-size: 1.5rem;
+    .home3-system-reveal {
+        overflow: visible;
+    }
+
+    .reveal-header {
+        padding: 72px 24px 48px;
+    }
+
+    .reveal-overflow {
+        overflow: visible;
+    }
+
+    .reveal-track {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 0 80px;
+        width: 100%;
+        will-change: unset;
+        transform: none !important; /* disable GSAP horizontal transform */
+    }
+
+    .reveal-step {
+        width: 100%;
+        max-width: 340px;
+        padding: 0 16px 40px;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .connector-wrapper {
+        width: 2px;
+        height: 48px;
+        flex-direction: column;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .connector-line {
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(180deg, #2a2a2a 0%, #ff4d6d 100%);
+        transform-origin: top center;
+        transform: scaleX(1) !important; /* reset horizontal scale for vertical connector */
+    }
+
+    .live-preview,
+    .ai-preview {
+        width: 280px;
+        height: 158px;
     }
 }

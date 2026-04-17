@@ -77,7 +77,7 @@ const Home3Personas = () => {
                                         controls
                                         playsInline
                                         preload="metadata"
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
+                                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
                                     />
                                 </div>
                             ) : (
